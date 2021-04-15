@@ -3,6 +3,7 @@ package bd
 import (
 	"context"
 	"log"
+	"os"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -10,7 +11,7 @@ import (
 
 //MongoCN es el objeto de conexión a la BD
 var MongoCN = ConectarBD()
-var clientOptions = options.Client().ApplyURI("mongodb+srv://admin:Test123456@twittor-db.e0xww.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI(os.Getenv("TwittorMongoDB"))
 
 //ConectarBD es la función que me permite conectar a la BD
 func ConectarBD() *mongo.Client {
