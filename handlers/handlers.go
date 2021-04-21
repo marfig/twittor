@@ -22,6 +22,10 @@ func Manejadores() {
 	router.HandleFunc("/tweet", middlew.ChequeoBD(middlew.ValidarJWT(routers.InsertarTweet))).Methods("POST")
 	router.HandleFunc("/tweets", middlew.ChequeoBD(middlew.ValidarJWT(routers.ObtenerTweets))).Methods("GET")
 	router.HandleFunc("/tweet", middlew.ChequeoBD(middlew.ValidarJWT(routers.EliminarTweet))).Methods("DELETE")
+	router.HandleFunc("/avatar", middlew.ChequeoBD(middlew.ValidarJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/avatar", middlew.ChequeoBD(middlew.ValidarJWT(routers.ObtenerAvatar))).Methods("GET")
+	router.HandleFunc("/banner", middlew.ChequeoBD(middlew.ValidarJWT(routers.SubirBanner))).Methods("POST")
+	router.HandleFunc("/banner", middlew.ChequeoBD(middlew.ValidarJWT(routers.ObtenerBanner))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
