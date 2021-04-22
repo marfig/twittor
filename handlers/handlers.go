@@ -28,6 +28,8 @@ func Manejadores() {
 	router.HandleFunc("/banner", middlew.ChequeoBD(middlew.ValidarJWT(routers.ObtenerBanner))).Methods("GET")
 	router.HandleFunc("/relacion", middlew.ChequeoBD(middlew.ValidarJWT(routers.AltaRelacion))).Methods("POST")
 	router.HandleFunc("/relacion", middlew.ChequeoBD(middlew.ValidarJWT(routers.EliminarRelacion))).Methods("DELETE")
+	router.HandleFunc("/relacion", middlew.ChequeoBD(middlew.ValidarJWT(routers.ConsultarRelacion))).Methods("GET")
+	router.HandleFunc("/usuario/buscar", middlew.ChequeoBD(middlew.ValidarJWT(routers.BuscarUsuarios))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
